@@ -144,7 +144,7 @@ def batch_generate_stream(
 
         if temperature < 1e-5 or top_p < 1e-8:  # greedy
             _, indices = torch.topk(last_token_logits, 2)
-            tokens = [int(index) for index in indices.tolist()]
+            tokens = [int(index[0]) for index in indices.tolist()]
         else:
             probs = torch.softmax(last_token_logits, dim=-1)
             indices = torch.multinomial(probs, num_samples=1)
