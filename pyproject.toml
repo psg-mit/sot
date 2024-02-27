@@ -13,7 +13,7 @@ dependencies = [
     "tqdm",
     "pandas",
     "openai", "tenacity", # API model
-    "fschat==0.2.26", "transformers", "accelerate", # open-source model (based on fastchat and huggingface Transformer)
+    "fschat==0.2.36", "transformers", "accelerate", # open-source model (based on fastchat and huggingface Transformer)
     "rwkv", "ninja", # rwkv-4-raven; rwkv-4-raven also needs `nvcc` to be installed and can be found in $PATH
     "einops", # mosaicml/mpt-7b-chat
     "cpm_kernels", # THUDM/chatglm-6b
