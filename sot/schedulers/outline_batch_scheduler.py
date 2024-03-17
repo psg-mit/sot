@@ -74,6 +74,8 @@ class OutlineBatchScheduler(OutlineScheduler):
         else:
             points, point_outlines = [], []
 
+        points, point_outlines = points[:self.max_points], point_outlines[:self.max_points]
+
         num_points = len(points)
         if num_points > 0:
             # Filter to get unique point indexes
