@@ -74,6 +74,19 @@ class OutlineBatchScheduler(OutlineScheduler):
         else:
             points, point_outlines = [], []
 
+        # dedup points
+        seen = set()
+        new_points, new_point_outlines = [], []
+        for point, outline in enumerate(point_outlines):
+            if outline in seen:
+                continue
+            seen.add(outline)
+
+            new_points.append(point+1)
+            new_point_outlines.append(outline)
+
+        points, point_outlines = new_points, new_point_outlines
+
         points, point_outlines = points[:self.max_points], point_outlines[:self.max_points]
 
         num_points = len(points)
