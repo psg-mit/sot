@@ -49,7 +49,9 @@ class RouterOutlineBatchScheduler:
         return tokenizer, model
 
     def get_fallback(self, request):
-        input_ids = self.router_tokenizer(request, return_tensors="pt").input_ids.cuda()
+        input_ids = self.router_tokenizer(request, return_tensors="pt",
+                                          truncation=True,
+                                          max_length=self.router_tokenizer.model_max_length).input_ids.cuda()
         output = self.router_model(input_ids)
         return torch.argmax(output[0]).item()
 
