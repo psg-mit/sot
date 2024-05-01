@@ -20,7 +20,6 @@ class RouterOutlineBatchScheduler:
         router_name_or_path,
         naive_prompt_file=None,
         outline_prompt_file=None,
-        max_points=20,
         **kwargs,
     ):
         self._model = model
@@ -29,7 +28,7 @@ class RouterOutlineBatchScheduler:
             prompt_file=naive_prompt_file, model=self._model
         )
         self.outline_scheduler = OutlineBatchScheduler(
-            prompt_file=outline_prompt_file, model=self._model, max_points=max_points
+            prompt_file=outline_prompt_file, model=self._model
         )
 
     def load_router(self, router_name_or_path):
