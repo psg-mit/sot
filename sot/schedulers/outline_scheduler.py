@@ -13,10 +13,9 @@ class OutlineScheduler(Scheduler):
     PROMPT_ROLE_SWITCH_STR = "[ROLESWITCHING assistant:]"
 
     def __init__(
-        self, prompt_file=None, outline_prompt=None, point_prompt=None, max_points=20, **kwargs
+        self, prompt_file=None, outline_prompt=None, point_prompt=None, **kwargs
     ):
         super().__init__(**kwargs)
-        self.max_points = max_points
         if prompt_file is not None:
             if outline_prompt is not None or point_prompt is not None:
                 raise ValueError(
@@ -156,8 +155,6 @@ class OutlineScheduler(Scheduler):
         else:
             points, point_outlines = [], []
         assert len(points) == len(point_outlines)
-
-        points, point_outlines = points[:self.max_points], point_outlines[:self.max_points]
 
         num_points = len(points)
         contents_time = []
